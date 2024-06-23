@@ -2,7 +2,11 @@ const data = require('../data/index')
 const newUser = require('../data/sampleUser')
 
 const listUsers = (req, res) => {
-  res.json(data)
+  try{
+    res.json(data)
+  }catch(error){
+    res.status(404).json({ error: error.message })
+  }
 }
 
 const showUser = (req, res) => {
